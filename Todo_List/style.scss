@@ -1,3 +1,5 @@
+@use 'sass:color'; // Importation du module sass:color
+
 //importation des polices
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
@@ -7,6 +9,11 @@ $bg-color-form: #f1faee;
 $bg-color-btn: #588157;
 $color-error: #ef233c;
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   display: flex;
@@ -20,7 +27,7 @@ body {
 
 // Définir des breakpoints en variables
 $mobile: 480px;
-$tablet: 768px;
+$tablet: 800px;
 
 // Mixin pour les media queries
 @mixin media($breakpoint) {
@@ -38,9 +45,8 @@ $tablet: 768px;
 // Styles principaux pour .form
 .form {
   background-color: $bg-color-form;
-  width: 100%;
+  width: 35%;
   padding: 5rem;
-  max-width: 15rem;
   margin: 2rem auto;
   border-radius: 0.5rem;
   .erreur{
@@ -49,14 +55,38 @@ $tablet: 768px;
     text-align: center;
     color: $color-error;
   }
-  ul{
-    list-style-type: lower-letter;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      display: flex;
+      align-items: center; // Centrage vertical
+      gap: 0.7rem;
+      padding: 0.3rem 0;
+      span {
+        font-size: 1.2rem;
+        min-width: 80px;
+        word-break: break-word;
+      }
+      button {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        transition: all 0.2s;
+        /* PAS de width ni height fixes ici ! */
+      }
+    }
   }
   label {
     text-align: center;
     font-weight: 600;
     font-size: 3rem;
-    margin: auto;
+    margin-left: 10%;
     padding: 0.1rem;
   }
   .bouton {
@@ -67,12 +97,13 @@ $tablet: 768px;
     font-size: 1rem;
     cursor: pointer;
     &:hover {
-      background-color: darken($bg-color-btn, 10%);
+      transform: scale(1.2);
+      background-color: #03c68b;
     }
   }
   .zoneSaisie {
-    width: 100%;
-    max-width: 12rem;
+    width: 85%;
+    
     padding: 0.3rem;
     font-size: 1.2rem;
     ::placeholder{
@@ -82,49 +113,81 @@ $tablet: 768px;
 
   // Media queries pour l'écran en dessous de 768px (tablette)
   @include media('tablet') {
-    width: 100%;
-    max-width: 13rem;
+    width: 70%;
     label {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
     .zoneSaisie {
-      width: 100%;
-      max-width: 10rem;
+      width: 80%;
       padding: 0.1 0.1rem;
     }
     .bouton {
-      padding: 0.4 0.4rem;
+      padding: 0.2 0.2rem;
       font-size: 0.8rem;
     }
   }
 
   // Media queries pour l'écran en dessous de 480px (mobile)
   @include media('mobile') {
-    width: 100%;
-    height: 100%;
-    min-height: 10rem;
-    max-width: 20rem;
-    padding: 1rem;
+    width: 90%;
+    padding: 2rem;
     label {
       text-align: center;
-      font-size: 2rem;
+      font-size: 1.5rem;
       display: block;
       margin-bottom: 0.5rem;
     }
     .zoneSaisie {
       margin-left: 0rem;
-      width: 100%;
-      max-width: 15rem;
+      width: 80%;
       padding: 0.4rem;
       font-size: 0.9rem;
     }
     .bouton {
-      padding: 0.3rem 0.6rem;
+      padding: 0.3rem 0.4rem;
       font-size: 1.2rem;
+    }
+  }
 
+  // Media queries pour la plage de 802px à 1111px
+  @media (min-width: 802px) and (max-width: 1111px) {
+    .form {
+      width: 50%; // Ajuste la taille de la largeur pour cette plage
+      padding: 4rem;
+    }
+    .zoneSaisie {
+      width: 80%; // Ajuste la largeur de la zone de saisie
+      font-size: 1.1rem; // Ajuste la taille de la police
+    }
+    .bouton {
+      padding: 0.5rem 0.4rem; // Ajuste les tailles du bouton
+      font-size: 1.1rem;
+    }
+    label {
+      font-size: 1.7rem; // Ajuste la taille du texte du label
     }
   }
 }
+
+
+@media (min-width: 802px) and (max-width: 1111px) {
+    .form {
+      width: 50%; // Ajuste la taille de la largeur pour cette plage
+      padding: 4rem;
+    }
+    .zoneSaisie {
+      width: 80%; // Ajuste la largeur de la zone de saisie
+      font-size: 1.1rem; // Ajuste la taille de la police
+    }
+    .bouton {
+      padding: 0.5rem 0.4rem; // Ajuste les tailles du bouton
+      font-size: 1.1rem;
+    }
+    label {
+      font-size: 1.7rem; // Ajuste la taille du texte du label
+    }
+  }
+
 
 //styles pied de page
 .footer{
@@ -133,7 +196,6 @@ $tablet: 768px;
     color: $bg-color-btn;
     font-weight: 600;
     &:hover {
-      color: darken($bg-color-btn, 10%);
       text-decoration: none;
     }
   }
