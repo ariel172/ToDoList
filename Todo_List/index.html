@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,15 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>To Do Lis</h1>
+    <form class="form">
+        <label for="saisie">To Do List</label>
+        <input type="text" name="zoneSaisie" class="zoneSaisie" id="saisie" placeholder="Add a new task">
+        <button type="submit" class="bouton">+</button>
+        <p class="erreur">Please enter a task</p>
+        <ul id="listes"></ul>
+    </form>
+    <footer class="footer">
+        <p>Made with ❤️ by <a href="https://github.com/ariel172" target="_blank" class="link">Yamien Ariel</a></p>
+    </footer>
 </body>
 </html>
